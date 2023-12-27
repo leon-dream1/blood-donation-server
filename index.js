@@ -25,6 +25,11 @@ const connection = mysql.createConnection({
     database: process.env.DB_DATABASE_NAME
 });
 
+app.get('/', (req, res) => {
+    res.send("Connection done");
+})
+
+
 connection.connect((err) => {
     if (err) {
         console.error('Error connecting to MySQL: ', err);
@@ -34,10 +39,7 @@ connection.connect((err) => {
     console.log('Connected to MySQL');
 
     //main work
-    app.get('/', (req, res) => {
-        res.send("Connection done");
-    })
-
+   
 
     //add Donor/Patient
     app.post('/addUser', (req, res) => {
