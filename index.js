@@ -8,26 +8,14 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-const port = process.env.PORT || 5000;
+const port = 5000;
 
-// const connection = mysql.createConnection({
-//     host: 'localhost',
-//     user: "root",
-//     password: '',
-//     database: "blood_bank_db"
-// });
-const uri = `mysql://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.PORT}/${process.env.DB_DATABASE_NAME}`
-const connection = mysql.createConnection(uri);
-
-// const connection = mysql.createConnection({
-//     host: process.env.DB_HOST,
-//     user: process.env.DB_USER,
-//     password: process.env.DB_PASSWORD,
-//     database: process.env.DB_DATABASE_NAME
-// });
-
-
-
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: "root",
+    password: '',
+    database: "blood_bank_db"
+});
 
 connection.connect((err) => {
     if (err) {
@@ -253,3 +241,22 @@ app.get('/allPatient', (req, res) => {
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })
+
+
+
+
+
+
+
+
+
+
+// const uri = `mysql://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.PORT}/${process.env.DB_DATABASE_NAME}`
+// const connection = mysql.createConnection(uri);
+
+// const connection = mysql.createConnection({
+//     host: process.env.DB_HOST,
+//     user: process.env.DB_USER,
+//     password: process.env.DB_PASSWORD,
+//     database: process.env.DB_DATABASE_NAME
+// });
