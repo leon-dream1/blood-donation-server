@@ -17,7 +17,7 @@ const port = process.env.PORT || 5000;
 //     database: "blood_bank_db"
 // });
 const uri = `mysql://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.PORT}/${process.env.DB_DATABASE_NAME}`
-const connection = mysql.createConnection(uri);
+const connection = mysql.createConnection({uri});
 
 // const connection = mysql.createConnection({
 //     host: process.env.DB_HOST,
