@@ -16,14 +16,15 @@ const port = process.env.PORT || 5000;
 //     password: '',
 //     database: "blood_bank_db"
 // });
-//const mysql = //uqfszrwrbgwb7stk:laZfhdTZTNvwb0BJrlZd@bjsqewhhvom1hkwwrjpf-mysql.services.clever-cloud.com:3306/bjsqewhhvom1hkwwrjpf
+const uri = `mysql://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.PORT}/${process.env.DB_DATABASE_NAME}`
+const connection = mysql.createConnection(uri);
 
-const connection = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_DATABASE_NAME
-});
+// const connection = mysql.createConnection({
+//     host: process.env.DB_HOST,
+//     user: process.env.DB_USER,
+//     password: process.env.DB_PASSWORD,
+//     database: process.env.DB_DATABASE_NAME
+// });
 
 app.get('/', (req, res) => {
     res.send("Connection done");
